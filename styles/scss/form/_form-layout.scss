@@ -1,0 +1,58 @@
+// стили для базовой разметки формы
+.form-layout {
+  margin: 0 auto 50px;
+  max-width: 550px;
+  padding: 30px 0;
+  position: relative;
+
+  &__header {
+    margin-bottom: 30px;
+  }
+
+  &__body {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    & + & {
+      margin-top: 25px;
+    }
+  }
+
+  &__footer {
+    position: relative;
+  }
+
+  &__submit {
+    background-color: $green;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    height: 60px;
+    letter-spacing: 2px;
+    padding: 0;
+    text-transform: uppercase;
+    transition: 0.2s;
+    width: 100%;
+
+    &:hover {
+      background-color: $green-hover;
+    }
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.6;
+      box-shadow: none;
+    }
+  }
+
+  &__warning {
+    @include warning;
+    position: absolute;
+    left: 0;
+    bottom: -16px;
+    text-align: center;
+    width: 100%;
+  }
+}

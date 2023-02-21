@@ -1,0 +1,75 @@
+.custom-select {
+  position: relative;
+  outline: none;
+
+  &__button {
+    align-items: center;
+    background-color: #fff;
+    border-radius: $border-radius-input;
+    color: initial;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    height: 50px;
+    padding: 0 20px;
+    position: relative;
+
+    &:after {
+      border: 5px solid transparent;
+      border-top-color: $grey; // должно стоять ниже св-ва border
+      content: '';
+      position: absolute;
+      right: 20px;
+      top: calc(50% - 2.5px);
+      z-index: 20;
+
+      .custom-select--active & {
+        border-top-color: transparent;
+        border-bottom-color: $grey;
+        top: calc(50% - 7.5px);
+      }
+    }
+
+    .custom-select:focus & {
+      box-shadow: 0 0 15px $green;
+    }
+  }
+
+  &__list {
+    background: #fff;
+    border-radius: $border-radius-input;
+    display: none;
+    left: 0;
+    min-height: 50px;
+    box-shadow: 0 0 15px $green;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+
+    .custom-select--active & {
+      display: block;
+    }
+  }
+
+  &__option {
+    align-items: center;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    height: 50px;
+    padding: 0 20px;
+    transition: 0.2s;
+
+    &--selected {
+      background: rgba($green, 0.4);
+      color: #000;
+      cursor: default;
+    }
+
+    &:not(&--selected):hover {
+      color: #000;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.loader {
+  &::before {
+    background-color: rgba(51, 51, 51, 0.8);
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  &:after {
+    animation: spin 1s ease-in-out infinite;
+    border-radius: 50%;
+    border: 10px solid rgba($green, 0.4);
+    border-top-color: $green; // должен быть под border
+    content: '';
+    height: 70px;
+    left: calc(50% - 35px);
+    position: fixed;
+    top: calc(50% - 35px);
+    width: 70px;
+    z-index: 100;
+  }
+}

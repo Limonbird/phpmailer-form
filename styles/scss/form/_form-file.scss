@@ -1,0 +1,62 @@
+$button-width: 120px;
+$button-height: 40px;
+
+.form-file {
+  &__action {
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  &__sublabel {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    // скрываем визуально инпут (будет поверх кнопки)
+    bottom: 0;
+    cursor: pointer;
+    font-size: 0; // чтобы курсор был на всю ширину кнопки
+    height: $button-height;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    width: $button-width;
+  }
+
+  &__button {
+    background-color: $purple;
+    border-radius: 10px;
+    height: $button-height;
+    padding: 0;
+    transition: 0.2s;
+    width: $button-width;
+
+    .form-file__input:focus ~ & {
+      box-shadow: 0 0 15px $green;
+    }
+
+    .form-file__input:hover ~ & {
+      background-color: $purple-hover;
+    }
+
+    .form-file__input.has-error ~ & {
+      box-shadow: 0 0 15px $red-warning;
+    }
+  }
+
+  &__preview {
+    margin: 0;
+    max-width: 100px;
+
+    & img {
+      max-width: 100%;
+    }
+  }
+
+  & label:hover {
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,67 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $grey;
+  border: 0;
+  color: #fff;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 14px;
+  height: 100%;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+a {
+  color: $green;
+  text-decoration: none;
+  transition: 0.2s;
+
+  &:hover {
+    // color: $purple;
+    color: $green-hover;
+    text-decoration: none;
+  }
+}
+
+img {
+  vertical-align: top;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  font-family: inherit;
+  line-height: inherit;
+  border: none;
+  outline: none;
+
+  &:focus {
+    box-shadow: 0 0 15px $green;
+  }
+}
+
+legend,
+button {
+  color: #fff;
+}

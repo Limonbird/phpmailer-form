@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/css/index.css" />
+    <title>Отправка формы на email</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- валидация через js, novalidate - чтобы не дублировалась с нативной валидацией-->
+      <form id="form" class="form-layout" novalidate>
+        <h1 class="form-layout__header">Отправка данных на email</h1>
+
+        <div class="form-layout__body">
+          <div class="form-layout__item">
+            <!-- в group обертуно, чтобы поменять местами инпут и лейбл для стилизации * required через css. -->
+            <!-- label должен быть под input-ом -->
+            <div class="field-group">
+              <input id="form-name" type="text" required name="name" class="field-group__input" />
+              <label for="form-name" class="field-group__label">Имя</label>
+            </div>
+          </div>
+
+          <div class="form-layout__item">
+            <div class="field-group">
+              <input id="form-email" type="email" required name="email" class="field-group__input" />
+              <label for="form-email" class="field-group__label">Email</label>
+            </div>
+            <p style="font-size: 12px; margin-top: 3px">
+              <i>Данные формы уйдут<br />на указанную здесь почту</i>
+            </p>
+          </div>
+
+          <div class="form-layout__item">
+            <fieldset class="form-fieldset">
+              <legend class="form-fieldset__legend">Пол</legend>
+              <div class="form-fieldset__item">
+                <div class="form-check form-check--radio">
+                  <input type="radio" checked name="sex" value="мужской" id="form-male" class="form-check__input" />
+                  <label for="form-male" class="form-check__label">Мужской</label>
+                </div>
+              </div>
+              <div class="form-fieldset__item">
+                <div class="form-check form-check--radio">
+                  <input type="radio" name="sex" value="женский" id="form-female" class="form-check__input" />
+                  <label for="form-female" class="form-check__label" class="form-check__label">Женский</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-layout__item">
+            <div class="field-group">
+              <textarea
+                name="message"
+                id="form-message"
+                class="field-group__textarea"
+                placeholder="Расскажите о себе"
+                required
+              ></textarea>
+              <label for="form-message" class="field-group__label">Сообщение</label>
+            </div>
+          </div>
+
+          <div class="form-layout__item">
+            <div class="field-group">
+              <select name="age" id="form-age">
+                <option value="до 25">Моложе 25 лет</option>
+                <option value="от 25 до 45" selected>От 25 до 45 лет</option>
+                <option value="от 45">Старше 45</option>
+              </select>
+              <label for="form-age" class="field-group__label"> Возраст </label>
+            </div>
+          </div>
+
+          <div class="form-layout__item">
+            <div class="form-file">
+              <div class="form-file__action">
+                <div class="field-group">
+                  <p class="form-file__sublabel">
+                    Допустимые форматы: jpeg, jpg, png, gif. Размер &mdash; не более 2 МБ.
+                  </p>
+                  <input
+                    accept=".jpg, .jpeg, .png, .gif"
+                    type="file"
+                    name="image"
+                    id="form-image"
+                    class="form-file__input field-group__file"
+                    required
+                  />
+                  <button type="button" id="file-button" class="form-file__button" tabindex="-1">Выбрать</button>
+                  <label for="form-image" class="field-group__label">Прикрепить фото</label>
+                </div>
+              </div>
+              <figure class="form-file__preview" id="image-preview"></figure>
+            </div>
+          </div>
+
+          <div class="form-layout__item">
+            <div class="form-check form-check--checkbox">
+              <input type="checkbox" checked required name="agreement" id="form-agreement" class="form-check__input" />
+              <label for="form-agreement" class="form-check__label">
+                <span>
+                  Я даю свое согласие на обработку персональных данных в соответствии с
+                  <a href="#">Условиями</a>*.
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-layout__footer">
+          <button type="submit" class="form-layout__submit">Отправить</button>
+        </div>
+      </form>
+    </div>
+    <script src="./js/custom-select.js"></script>
+    <script src="./js/send-form.js"></script>
+  </body>
+</html>

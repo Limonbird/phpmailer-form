@@ -1,0 +1,78 @@
+// стилизация <input> type radio и checkbox
+.form-check {
+  position: relative;
+
+  &__label {
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    line-height: 1.4;
+    position: relative;
+
+    &::before {
+      content: '';
+      background-color: #fff;
+      flex: 0 0 24px;
+      height: 24px;
+      margin-right: 10px;
+
+      .form-check--radio & {
+        border-radius: 50%;
+      }
+
+      .form-check--checkbox & {
+        border-radius: 4px;
+      }
+
+      .form-check--radio .form-check__input:focus ~ &,
+      .form-check--checkbox .form-check__input:focus ~ & {
+        box-shadow: 0 0 15px $green;
+      }
+
+      .form-check--checkbox .form-check__input.has-error ~ & {
+        box-shadow: 0 0 15px $red-warning;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 16px;
+      height: 16px;
+      background-color: $green;
+      transform: scale(0); // скрываем checked
+      transition: transform 150ms ease;
+
+      .form-check--radio & {
+        border-radius: 50%;
+      }
+
+      .form-check--checkbox & {
+        border-radius: 4px;
+      }
+
+      .form-check--radio .form-check__input:checked ~ &,
+      .form-check--checkbox .form-check__input:checked ~ & {
+        transform: scale(1); // маркер checked
+      }
+    }
+  }
+
+  &__input {
+    // кастомизация инпута
+    // убираем дефолтный маркер - через display none скрывать не надо!, т.к. пропадает навигация по tab.
+    // скрываем вот так
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  & .error-msg {
+    @include warning;
+    position: absolute;
+    right: 0;
+    bottom: -16px;
+  }
+}

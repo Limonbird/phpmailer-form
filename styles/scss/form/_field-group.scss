@@ -1,0 +1,65 @@
+// для группы лейбл + инпут
+// кроме групп checkbox и radiobutton - для них form-fielset.scss + form-check.scss
+.field-group {
+  // внимание в hmtl - label нужно ставить под input, чтобы сработал селектор правого соседа (~). Для стилизации * required. Если input required - добавляем * к label. При этом label ниже в коде через flex поднимаем над полем для верного отображения в соотв. с макетом.
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__label {
+    display: block;
+    font-size: $font-size-label;
+    margin-bottom: 10px;
+    order: -1; // поднимаем элемент визуально над инпутом
+  }
+
+  %required-star {
+    &:required ~ label {
+      &::after {
+        color: $red-warning;
+        content: '*';
+        padding-left: 3px;
+      }
+    }
+  }
+
+  %input {
+    @extend %required-star;
+    border-radius: $border-radius-input;
+    font-size: 18px;
+    width: 100%;
+  }
+
+  &__input {
+    @extend %input;
+    height: 50px;
+    padding: 0 20px;
+
+    &.has-error {
+      box-shadow: 0 0 15px $red-warning;
+    }
+  }
+
+  &__textarea {
+    @extend %input;
+    min-height: 120px;
+    padding: 20px;
+    resize: vertical;
+
+    &.has-error {
+      box-shadow: 0 0 15px $red-warning;
+    }
+  }
+
+  &__file {
+    @extend %required-star;
+    border-radius: 10px;
+  }
+
+  & .error-msg {
+    @include warning;
+    position: absolute;
+    right: 0;
+    bottom: -16px;
+  }
+}

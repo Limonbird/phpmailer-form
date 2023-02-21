@@ -1,0 +1,18 @@
+// стилизация <fieldset> (рамка, legend)
+// это обертка для групп checkbox, radiobutton
+.form-fieldset {
+  border: 0 none;
+  margin: 0;
+  padding: 0;
+
+  &__legend {
+    font-size: $font-size-label;
+    margin-bottom: 10px;
+  }
+
+  &__item {
+    & + & {
+      margin-top: 10px;
+    }
+  }
+}
